@@ -7,8 +7,6 @@ import {
   GitBranch, 
   CheckCircle2,
   AlertCircle,
-  Play,
-  Copy,
   Box,
   Server,
   Rocket
@@ -17,12 +15,8 @@ import { AppLayout } from '@/components/layout/AppLayout';
 import { getServiceById } from '@/data/services';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Switch } from '@/components/ui/switch';
 import { cn } from '@/lib/utils';
-import { useState } from 'react';
-import { useToast } from '@/hooks/use-toast';
+import { ServiceWizard } from '@/components/wizard/ServiceWizard';
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   kubernetes: Box,
@@ -33,8 +27,6 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
 export default function ServiceDetail() {
   const { id } = useParams<{ id: string }>();
   const service = getServiceById(id || '');
-  const { toast } = useToast();
-  const [formValues, setFormValues] = useState<Record<string, string | boolean>>({});
 
   if (!service) {
     return (
@@ -53,13 +45,6 @@ export default function ServiceDetail() {
   }
 
   const Icon = iconMap[service.icon] || Box;
-
-  const handleSubmit = () => {
-    toast({
-      title: "Request Submitted",
-      description: `Your ${service.name} request has been submitted for provisioning.`,
-    });
-  };
 
   return (
     <AppLayout>
@@ -133,95 +118,29 @@ export default function ServiceDetail() {
         </div>
 
         <div className="mt-8 grid gap-8 lg:grid-cols-3">
-          {/* Main Content */}
+          {/* Main Content - Wizard */}
           <div className="lg:col-span-2 space-y-8">
+            <ServiceWizard service={service} />
+          </div>
+
+          {/* Sidebar */}
+          <div className="space-y-6">
             {/* Features */}
             <section className="rounded-xl border border-border bg-card p-6">
-              <h2 className="text-lg font-semibold text-foreground">Features</h2>
-              <ul className="mt-4 grid gap-3 sm:grid-cols-2">
-                {service.features.map((feature) => (
-                  <li key={feature} className="flex items-start gap-2">
-                    <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-success" />
-                    <span className="text-sm text-muted-foreground">{feature}</span>
+              <h3 className="flex items-center gap-2 text-sm font-semibold text-foreground">
+                <CheckCircle2 className="h-4 w-4 text-success" />
+                Features
+              </h3>
+              <ul className="mt-4 space-y-2">
+                {service.features.slice(0, 6).map((feature) => (
+                  <li key={feature} className="flex items-start gap-2 text-sm">
+                    <div className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
+                    <span className="text-muted-foreground">{feature}</span>
                   </li>
                 ))}
               </ul>
             </section>
 
-            {/* Configuration Form */}
-            <section className="rounded-xl border border-border bg-card p-6">
-              <h2 className="text-lg font-semibold text-foreground">Configuration</h2>
-              <p className="mt-1 text-sm text-muted-foreground">
-                Fill in the required parameters to provision this service
-              </p>
-              
-              <div className="mt-6 space-y-6">
-                {service.parameters.map((param) => (
-                  <div key={param.name}>
-                    <Label htmlFor={param.name} className="flex items-center gap-2">
-                      {param.name.replace(/_/g, ' ')}
-                      {param.required && (
-                        <span className="text-destructive">*</span>
-                      )}
-                    </Label>
-                    <p className="mt-0.5 text-xs text-muted-foreground">{param.description}</p>
-                    
-                    {param.type === 'boolean' ? (
-                      <div className="mt-2 flex items-center gap-2">
-                        <Switch 
-                          id={param.name}
-                          checked={!!formValues[param.name]}
-                          onCheckedChange={(checked) => 
-                            setFormValues(prev => ({ ...prev, [param.name]: checked }))
-                          }
-                        />
-                        <span className="text-sm text-muted-foreground">
-                          {formValues[param.name] ? 'Enabled' : 'Disabled'}
-                        </span>
-                      </div>
-                    ) : param.type === 'select' && param.options ? (
-                      <select 
-                        id={param.name}
-                        className="mt-2 w-full rounded-md border border-border bg-background px-3 py-2 text-sm text-foreground"
-                        onChange={(e) => 
-                          setFormValues(prev => ({ ...prev, [param.name]: e.target.value }))
-                        }
-                      >
-                        <option value="">Select {param.name.replace(/_/g, ' ')}</option>
-                        {param.options.map((option) => (
-                          <option key={option} value={option}>{option}</option>
-                        ))}
-                      </select>
-                    ) : (
-                      <Input
-                        id={param.name}
-                        type={param.type === 'number' ? 'number' : 'text'}
-                        placeholder={`Enter ${param.name.replace(/_/g, ' ')}`}
-                        className="mt-2 bg-background"
-                        onChange={(e) => 
-                          setFormValues(prev => ({ ...prev, [param.name]: e.target.value }))
-                        }
-                      />
-                    )}
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-8 flex items-center gap-4">
-                <Button onClick={handleSubmit} className="gap-2">
-                  <Play className="h-4 w-4" />
-                  Submit Request
-                </Button>
-                <Button variant="outline" className="gap-2">
-                  <Copy className="h-4 w-4" />
-                  Save as Template
-                </Button>
-              </div>
-            </section>
-          </div>
-
-          {/* Sidebar */}
-          <div className="space-y-6">
             {/* Prerequisites */}
             <section className="rounded-xl border border-border bg-card p-6">
               <h3 className="flex items-center gap-2 text-sm font-semibold text-foreground">
