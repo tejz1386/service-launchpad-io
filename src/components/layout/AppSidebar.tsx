@@ -16,7 +16,8 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 
 const navigation = [
-  { name: 'Service Catalog', href: '/', icon: LayoutGrid },
+  { name: 'Catalog', href: '/catalog', icon: LayoutGrid },
+  { name: 'Self-Service', href: '/', icon: Rocket },
   { name: 'My Requests', href: '/requests', icon: Activity },
   { name: 'Teams', href: '/teams', icon: Users },
   { name: 'Documentation', href: '/docs', icon: BookOpen },
