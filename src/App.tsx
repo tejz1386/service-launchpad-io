@@ -8,6 +8,7 @@ import CatalogList from "./pages/CatalogList";
 import ServiceDetail from "./pages/ServiceDetail";
 import Teams from "./pages/Teams";
 import TeamDetail from "./pages/TeamDetail";
+import CostInsights from "./pages/CostInsights";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -24,6 +25,7 @@ const App = () => (
           <Route path="/service/:id" element={<ServiceDetail />} />
           <Route path="/teams" element={<Teams />} />
           <Route path="/teams/:id" element={<TeamDetail />} />
+          <Route path="/cost-insights" element={<CostInsights />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
