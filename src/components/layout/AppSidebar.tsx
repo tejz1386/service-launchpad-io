@@ -9,7 +9,8 @@ import {
   Users,
   Activity,
   ChevronLeft,
-  Menu
+  Menu,
+  PiggyBank
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useState } from 'react';
@@ -20,6 +21,7 @@ const navigation = [
   { name: 'Self-Service', href: '/', icon: Rocket },
   { name: 'My Requests', href: '/requests', icon: Activity },
   { name: 'Teams', href: '/teams', icon: Users },
+  { name: 'Cost Insights', href: '/cost-insights', icon: PiggyBank },
   { name: 'Documentation', href: '/docs', icon: BookOpen },
   { name: 'Settings', href: '/settings', icon: Settings },
 ];
