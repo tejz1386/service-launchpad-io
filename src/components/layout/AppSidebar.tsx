@@ -10,18 +10,20 @@ import {
   Activity,
   ChevronLeft,
   Menu,
-  PiggyBank
+  PiggyBank,
+  Home
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 
 const navigation = [
+  { name: 'Home', href: '/', icon: Home },
+  { name: 'Self-Service', href: '/self-service', icon: Rocket },
   { name: 'Catalog', href: '/catalog', icon: LayoutGrid },
-  { name: 'Self-Service', href: '/', icon: Rocket },
-  { name: 'My Requests', href: '/requests', icon: Activity },
   { name: 'Teams', href: '/teams', icon: Users },
   { name: 'Cost Insights', href: '/cost-insights', icon: PiggyBank },
+  { name: 'My Requests', href: '/requests', icon: Activity },
   { name: 'Documentation', href: '/docs', icon: BookOpen },
   { name: 'Settings', href: '/settings', icon: Settings },
 ];

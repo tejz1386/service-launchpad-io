@@ -3,6 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
 import SelfService from "./pages/Catalog";
 import CatalogList from "./pages/CatalogList";
 import ServiceDetail from "./pages/ServiceDetail";
@@ -20,7 +21,8 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<SelfService />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/self-service" element={<SelfService />} />
           <Route path="/catalog" element={<CatalogList />} />
           <Route path="/service/:id" element={<ServiceDetail />} />
           <Route path="/teams" element={<Teams />} />
