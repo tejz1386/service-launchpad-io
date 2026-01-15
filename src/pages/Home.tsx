@@ -33,7 +33,7 @@ const quickActions = [
     title: 'Onboard Your Team',
     description: 'Create a workspace for your team and start collaborating. Set up escalation matrices, manage cloud accounts, and track training progress.',
     icon: Users,
-    action: '/teams',
+    action: '/teams/onboarding',
     buttonText: 'Get Started',
     color: 'bg-blue-500/10 text-blue-500 border-blue-500/20',
   },
