@@ -9,6 +9,7 @@ import CatalogList from "./pages/CatalogList";
 import ServiceDetail from "./pages/ServiceDetail";
 import Teams from "./pages/Teams";
 import TeamDetail from "./pages/TeamDetail";
+import TeamOnboarding from "./pages/TeamOnboarding";
 import CostInsights from "./pages/CostInsights";
 import NotFound from "./pages/NotFound";
 
@@ -26,6 +27,7 @@ const App = () => (
           <Route path="/catalog" element={<CatalogList />} />
           <Route path="/service/:id" element={<ServiceDetail />} />
           <Route path="/teams" element={<Teams />} />
+          <Route path="/teams/onboarding" element={<TeamOnboarding />} />
           <Route path="/teams/:id" element={<TeamDetail />} />
           <Route path="/cost-insights" element={<CostInsights />} />
           <Route path="*" element={<NotFound />} />
