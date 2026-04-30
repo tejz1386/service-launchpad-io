@@ -20,6 +20,12 @@ export interface Documentation {
   title: string;
   url: string;
   type: 'runbook' | 'architecture' | 'onboarding' | 'policy';
+  summary?: string;
+  team?: string;
+  topics?: string[];
+  catalogRefs?: string[];
+  author?: string;
+  updatedAt?: string;
 }
 
 export interface CloudAccount {
@@ -117,10 +123,11 @@ export const teams: Team[] = [
       { name: 'platform-cli', url: 'https://github.com/company/platform-cli', description: 'Internal CLI tool for developers', language: 'Go', lastUpdated: '1 week ago' },
     ],
     documentation: [
-      { title: 'Platform Onboarding Guide', url: '/docs/onboarding', type: 'onboarding' },
-      { title: 'Kubernetes Architecture', url: '/docs/k8s-arch', type: 'architecture' },
-      { title: 'Incident Response Runbook', url: '/docs/incident-runbook', type: 'runbook' },
-      { title: 'Security Policies', url: '/docs/security', type: 'policy' },
+      { title: 'Platform Onboarding Guide', url: '/docs/onboarding', type: 'onboarding', summary: 'Step-by-step guide for new engineers joining the platform team.', team: 'Infrastructure Platform Engineering', topics: ['onboarding', 'kubernetes', 'cicd'], catalogRefs: ['svc-k8s-namespace', 'svc-app-deployment'], author: 'Sarah Chen', updatedAt: '2024-04-12' },
+      { title: 'Kubernetes Cluster Architecture', url: '/docs/k8s-arch', type: 'architecture', summary: 'Multi-region AKS/GKE topology, networking, and ingress design.', team: 'Infrastructure Platform Engineering', topics: ['kubernetes', 'networking', 'architecture'], catalogRefs: ['svc-k8s-namespace'], author: 'Marcus Johnson', updatedAt: '2024-04-22' },
+      { title: 'Incident Response Runbook', url: '/docs/incident-runbook', type: 'runbook', summary: 'Triage, escalation paths, and rollback procedures for platform incidents.', team: 'Infrastructure Platform Engineering', topics: ['incident-response', 'sre', 'runbook'], catalogRefs: [], author: 'Priya Patel', updatedAt: '2024-04-18' },
+      { title: 'Platform Security Policies', url: '/docs/security', type: 'policy', summary: 'RBAC, secrets management, and image scanning standards.', team: 'Infrastructure Platform Engineering', topics: ['security', 'compliance', 'rbac'], catalogRefs: ['svc-k8s-namespace'], author: 'Sarah Chen', updatedAt: '2024-04-05' },
+      { title: 'CI/CD Template Catalog', url: '/docs/cicd-templates', type: 'architecture', summary: 'Reusable pipeline templates for build, test, and deploy.', team: 'Infrastructure Platform Engineering', topics: ['cicd', 'pipelines', 'templates'], catalogRefs: ['svc-app-deployment'], author: 'Alex Rivera', updatedAt: '2024-04-25' },
     ],
     cloudAccounts: [
       { provider: 'aws', accountId: '123456789012', name: 'Platform-Prod', environment: 'production', monthlySpend: 45000 },
@@ -175,9 +182,10 @@ export const teams: Team[] = [
       { name: 'cloud-patterns', url: 'https://github.com/company/cloud-patterns', description: 'Reference architectures and patterns', language: 'HCL', lastUpdated: '1 week ago' },
     ],
     documentation: [
-      { title: 'Migration Assessment Framework', url: '/docs/migration-framework', type: 'architecture' },
-      { title: 'Containerization Guide', url: '/docs/containerization', type: 'runbook' },
-      { title: 'Cloud Readiness Checklist', url: '/docs/readiness', type: 'onboarding' },
+      { title: 'Migration Assessment Framework', url: '/docs/migration-framework', type: 'architecture', summary: '6Rs assessment, dependency mapping, and wave planning.', team: 'Cloud Modernization', topics: ['migration', 'assessment', 'architecture'], catalogRefs: ['svc-vm-provisioning'], author: 'David Thompson', updatedAt: '2024-04-20' },
+      { title: 'Containerization Playbook', url: '/docs/containerization', type: 'runbook', summary: 'Step-by-step containerization of legacy Java and .NET apps.', team: 'Cloud Modernization', topics: ['containers', 'docker', 'modernization'], catalogRefs: ['svc-app-deployment'], author: 'Emily Watson', updatedAt: '2024-04-15' },
+      { title: 'Cloud Readiness Checklist', url: '/docs/readiness', type: 'onboarding', summary: 'Pre-migration checks for security, networking, and cost.', team: 'Cloud Modernization', topics: ['onboarding', 'migration', 'checklist'], catalogRefs: [], author: 'Raj Sharma', updatedAt: '2024-04-09' },
+      { title: 'Landing Zone Reference Architecture', url: '/docs/landing-zone', type: 'architecture', summary: 'AWS Control Tower & Azure Landing Zone blueprints.', team: 'Cloud Modernization', topics: ['landing-zone', 'aws', 'azure', 'architecture'], catalogRefs: ['svc-vm-provisioning'], author: 'Lisa Chang', updatedAt: '2024-04-23' },
     ],
     cloudAccounts: [
       { provider: 'aws', accountId: '345678901234', name: 'Migration-Sandbox', environment: 'development', monthlySpend: 8000 },
@@ -230,10 +238,11 @@ export const teams: Team[] = [
       { name: 'automation-scripts', url: 'https://github.com/company/automation-scripts', description: 'Operational automation scripts', language: 'Python', lastUpdated: '3 days ago' },
     ],
     documentation: [
-      { title: 'Incident Management Process', url: '/docs/incident-mgmt', type: 'runbook' },
-      { title: 'Monitoring Architecture', url: '/docs/monitoring-arch', type: 'architecture' },
-      { title: 'On-Call Handbook', url: '/docs/oncall', type: 'onboarding' },
-      { title: 'SLA/SLO Definitions', url: '/docs/sla-slo', type: 'policy' },
+      { title: 'Incident Management Process', url: '/docs/incident-mgmt', type: 'runbook', summary: 'Severity matrix, comms templates, and post-mortem workflow.', team: 'Cloud Operations', topics: ['incident-response', 'sre', 'process'], catalogRefs: [], author: 'Michael Brown', updatedAt: '2024-04-26' },
+      { title: 'Monitoring & Observability Architecture', url: '/docs/monitoring-arch', type: 'architecture', summary: 'Prometheus, Grafana, Loki, and OTEL pipeline overview.', team: 'Cloud Operations', topics: ['monitoring', 'observability', 'architecture'], catalogRefs: ['svc-app-deployment'], author: 'Anna Kowalski', updatedAt: '2024-04-19' },
+      { title: 'On-Call Handbook', url: '/docs/oncall', type: 'onboarding', summary: 'Rotation rules, paging, and runbook conventions for new on-callers.', team: 'Cloud Operations', topics: ['onboarding', 'oncall', 'sre'], catalogRefs: [], author: 'James Wilson', updatedAt: '2024-04-11' },
+      { title: 'SLA / SLO Definitions', url: '/docs/sla-slo', type: 'policy', summary: 'Service tier definitions and error budget policy.', team: 'Cloud Operations', topics: ['sla', 'slo', 'policy', 'reliability'], catalogRefs: ['svc-k8s-namespace', 'svc-app-deployment'], author: 'Michael Brown', updatedAt: '2024-04-03' },
+      { title: 'Alerting Rules Catalog', url: '/docs/alerting-catalog', type: 'runbook', summary: 'Standard alert rules with thresholds and remediation links.', team: 'Cloud Operations', topics: ['alerting', 'monitoring', 'runbook'], catalogRefs: [], author: 'Sophie Martinez', updatedAt: '2024-04-24' },
     ],
     cloudAccounts: [
       { provider: 'aws', accountId: '456789012345', name: 'Monitoring-Central', environment: 'production', monthlySpend: 15000 },
@@ -288,10 +297,11 @@ export const teams: Team[] = [
       { name: 'license-tracker', url: 'https://github.com/company/license-tracker', description: 'Software license management tool', language: 'TypeScript', lastUpdated: '1 week ago' },
     ],
     documentation: [
-      { title: 'Cost Allocation Guidelines', url: '/docs/cost-allocation', type: 'policy' },
-      { title: 'Software Procurement Process', url: '/docs/procurement', type: 'runbook' },
-      { title: 'FinOps Framework', url: '/docs/finops-framework', type: 'architecture' },
-      { title: 'License Compliance Guide', url: '/docs/license-compliance', type: 'policy' },
+      { title: 'Cost Allocation & Tagging Guidelines', url: '/docs/cost-allocation', type: 'policy', summary: 'Mandatory tags, hierarchy, and showback model.', team: 'FinOps & SWAM', topics: ['finops', 'tagging', 'policy'], catalogRefs: [], author: 'Jennifer Adams', updatedAt: '2024-04-21' },
+      { title: 'Software Procurement Process', url: '/docs/procurement', type: 'runbook', summary: 'Intake, approvals, and vendor onboarding workflow.', team: 'FinOps & SWAM', topics: ['procurement', 'swam', 'process'], catalogRefs: [], author: 'Michelle Park', updatedAt: '2024-04-08' },
+      { title: 'FinOps Framework Overview', url: '/docs/finops-framework', type: 'architecture', summary: 'Inform, optimize, operate phases applied to our org.', team: 'FinOps & SWAM', topics: ['finops', 'framework', 'architecture'], catalogRefs: [], author: 'Robert Taylor', updatedAt: '2024-04-17' },
+      { title: 'License Compliance Guide', url: '/docs/license-compliance', type: 'policy', summary: 'True-up cycles, audits, and BYOL guidance.', team: 'FinOps & SWAM', topics: ['licensing', 'compliance', 'swam'], catalogRefs: [], author: 'Michelle Park', updatedAt: '2024-04-02' },
+      { title: 'FinOps Score Methodology', url: '/docs/finops-score', type: 'architecture', summary: 'How application FinOps scores are calculated and improved.', team: 'FinOps & SWAM', topics: ['finops', 'scoring', 'optimization'], catalogRefs: ['svc-vm-provisioning'], author: 'Chris Anderson', updatedAt: '2024-04-27' },
     ],
     cloudAccounts: [
       { provider: 'aws', accountId: '678901234567', name: 'FinOps-Management', environment: 'production', monthlySpend: 2500 },
