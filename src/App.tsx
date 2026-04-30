@@ -11,6 +11,7 @@ import Teams from "./pages/Teams";
 import TeamDetail from "./pages/TeamDetail";
 import TeamOnboarding from "./pages/TeamOnboarding";
 import CostInsights from "./pages/CostInsights";
+import DocumentationPage from "./pages/Documentation";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -30,6 +31,7 @@ const App = () => (
           <Route path="/teams/onboarding" element={<TeamOnboarding />} />
           <Route path="/teams/:id" element={<TeamDetail />} />
           <Route path="/cost-insights" element={<CostInsights />} />
+          <Route path="/docs" element={<DocumentationPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
