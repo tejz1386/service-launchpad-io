@@ -20,6 +20,7 @@ export const catalogOwners = [
   'FinOps & SWAM',
   'Security Team',
   'DevOps Team',
+  'Cloud Architects',
 ];
 
 export const catalogComponents: CatalogComponent[] = [
