@@ -74,6 +74,7 @@ export const catalogComponents: CatalogComponent[] = [
     status: 'active',
   },
   {
+    id: 'svc-database',
     name: 'Managed Database Service',
     owner: 'Cloud Operations',
     type: 'service',
