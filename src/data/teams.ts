@@ -356,6 +356,64 @@ export const teams: Team[] = [
       { id: 'CHG-402', title: 'Deploy cost anomaly detection', type: 'standard', status: 'in-progress', scheduledDate: '2024-01-21', owner: 'Robert Taylor' },
     ],
   },
+  {
+    id: 'cloud-architects',
+    name: 'Cloud Architects',
+    shortName: 'CA',
+    description: 'Defines multi-cloud reference architectures, landing zones, and governance standards. Owns the Cloud Vending Machine and approves non-standard tenancy requests.',
+    icon: 'Cloud',
+    color: 'from-sky-500 to-indigo-500',
+    slackChannel: '#cloud-architects',
+    onCallRotation: 'Weekly rotation - Wednesdays',
+    members: [
+      { id: 'ca1', name: 'Elena Rossi', role: 'Chief Cloud Architect', email: 'elena.rossi@company.com', avatar: 'ER', escalationLevel: 1, phone: '+1-555-0901' },
+      { id: 'ca2', name: 'Rahul Mehta', role: 'Principal Cloud Architect', email: 'rahul.mehta@company.com', avatar: 'RM', escalationLevel: 2, phone: '+1-555-0902' },
+      { id: 'ca3', name: 'Yuki Tanaka', role: 'Senior Cloud Architect (Azure)', email: 'yuki.tanaka@company.com', avatar: 'YT', escalationLevel: 2 },
+      { id: 'ca4', name: 'Diego Alvarez', role: 'Senior Cloud Architect (AWS)', email: 'diego.alvarez@company.com', avatar: 'DA', escalationLevel: 2 },
+      { id: 'ca5', name: 'Hannah Berg', role: 'Cloud Architect (GCP)', email: 'hannah.berg@company.com', avatar: 'HB', escalationLevel: 3 },
+    ],
+    repositories: [
+      { name: 'cloud-vending-machine', url: 'https://github.com/company/cloud-vending-machine', description: 'Terraform + workflow engine that provisions Azure subs / GCP projects / AWS accounts', language: 'HCL', lastUpdated: '4 hours ago' },
+      { name: 'landing-zone-blueprints', url: 'https://github.com/company/landing-zone-blueprints', description: 'Reference landing zone modules for Azure, GCP, and AWS', language: 'HCL', lastUpdated: '2 days ago' },
+      { name: 'cloud-policy-as-code', url: 'https://github.com/company/cloud-policy-as-code', description: 'OPA / Azure Policy / SCP guardrails', language: 'Rego', lastUpdated: '5 days ago' },
+      { name: 'cloud-arch-decision-records', url: 'https://github.com/company/cloud-adr', description: 'Architecture decision records for cloud standards', language: 'Markdown', lastUpdated: '1 week ago' },
+    ],
+    documentation: [
+      { title: 'Cloud Vending Machine — User Guide', url: '/docs/cvm-user-guide', type: 'onboarding', summary: 'How to request a new Azure Subscription, GCP Project, or AWS Account via DevPortal.', team: 'Cloud Architects', topics: ['cloud', 'self-service', 'onboarding'], catalogRefs: ['svc-cloud-vending-machine'], author: 'Elena Rossi', updatedAt: '2025-05-01' },
+      { title: 'Multi-Cloud Landing Zone Architecture', url: '/docs/landing-zone', type: 'architecture', summary: 'Standard landing zone topology across Azure, GCP, and AWS — networking, IAM, logging.', team: 'Cloud Architects', topics: ['landing-zone', 'architecture', 'multi-cloud'], catalogRefs: ['svc-cloud-vending-machine'], author: 'Rahul Mehta', updatedAt: '2025-04-20' },
+      { title: 'Tenancy Tagging & Cost Allocation Policy', url: '/docs/tagging-policy', type: 'policy', summary: 'Mandatory tags (business unit, department, cost center) for chargeback and showback.', team: 'Cloud Architects', topics: ['finops', 'tagging', 'governance'], catalogRefs: ['svc-cloud-vending-machine'], author: 'Hannah Berg', updatedAt: '2025-04-12' },
+      { title: 'Account Decommissioning Runbook', url: '/docs/decommission', type: 'runbook', summary: 'Safely retire an Azure Subscription, GCP Project, or AWS Account.', team: 'Cloud Architects', topics: ['runbook', 'lifecycle'], catalogRefs: ['svc-cloud-vending-machine'], author: 'Diego Alvarez', updatedAt: '2025-03-28' },
+      { title: 'Cloud Architecture Review Process', url: '/docs/arch-review', type: 'policy', summary: 'When and how to request an architecture review board (ARB) decision.', team: 'Cloud Architects', topics: ['governance', 'review'], catalogRefs: [], author: 'Yuki Tanaka', updatedAt: '2025-04-02' },
+    ],
+    cloudAccounts: [
+      { provider: 'azure', accountId: 'sub-cloudarch-mgmt', name: 'CloudArch-Management', environment: 'production', monthlySpend: 9500 },
+      { provider: 'aws', accountId: '987654321098', name: 'CloudArch-Sandbox', environment: 'development', monthlySpend: 2100 },
+      { provider: 'gcp', accountId: 'cloudarch-blueprints', name: 'CloudArch-Blueprints', environment: 'staging', monthlySpend: 3400 },
+    ],
+    adGroups: [
+      { name: 'SG-Cloud-Architects', type: 'security', memberCount: 5, description: 'Cloud architect team access' },
+      { name: 'SG-CVM-Operators', type: 'security', memberCount: 8, description: 'Cloud Vending Machine operators and approvers' },
+      { name: 'DL-Cloud-Architects', type: 'distribution', memberCount: 12, description: 'Cloud architecture distribution list' },
+    ],
+    serviceAccounts: [
+      { name: 'sa-cvm-orchestrator', provider: 'azure', purpose: 'Cloud Vending Machine orchestration in Azure', lastRotated: '2025-04-15' },
+      { name: 'sa-cvm-aws-org', provider: 'aws', purpose: 'AWS Organizations account creation', lastRotated: '2025-04-10' },
+      { name: 'sa-cvm-gcp-folders', provider: 'gcp', purpose: 'GCP folder & project creation', lastRotated: '2025-04-12' },
+    ],
+    trainings: [
+      { id: 'tca1', title: 'AWS Well-Architected Framework', description: 'Pillars of well-architected AWS workloads', duration: '6 hours', xpReward: 700, completed: true, category: 'required', badge: '☁️' },
+      { id: 'tca2', title: 'Azure Landing Zones', description: 'Cloud Adoption Framework landing zones', duration: '5 hours', xpReward: 650, completed: true, category: 'required', badge: '🏛️' },
+      { id: 'tca3', title: 'GCP Foundations', description: 'GCP organization, folder, and project hierarchy', duration: '4 hours', xpReward: 500, completed: false, category: 'required' },
+      { id: 'tca4', title: 'Multi-Cloud Networking', description: 'Hub-and-spoke and transit patterns across clouds', duration: '5 hours', xpReward: 600, completed: false, category: 'advanced', badge: '🌐' },
+    ],
+    incidents: [
+      { id: 'INC-CA-001', title: 'CVM workflow stuck on AWS account creation', severity: 'high', status: 'investigating', createdAt: '2025-05-04T09:15:00Z', assignee: 'Diego Alvarez' },
+    ],
+    changes: [
+      { id: 'CHG-CA-501', title: 'Roll out new tagging policy v2', type: 'normal', status: 'scheduled', scheduledDate: '2025-05-15', owner: 'Hannah Berg' },
+      { id: 'CHG-CA-502', title: 'Add GCP support to Cloud Vending Machine v1.1', type: 'normal', status: 'in-progress', scheduledDate: '2025-05-10', owner: 'Rahul Mehta' },
+    ],
+  },
 ];
 
 export function getTeamById(id: string): Team | undefined {
