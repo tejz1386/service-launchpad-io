@@ -141,6 +141,48 @@ export const services: Service[] = [
       { name: 'enable_logging', type: 'boolean', required: false, description: 'Enable centralized logging' },
       { name: 'enable_security_scans', type: 'boolean', required: false, description: 'Enable SAST/DAST security scans' }
     ]
+  },
+  {
+    id: 'cloud-vending-machine',
+    name: 'Cloud Vending Machine',
+    description: 'Self-service provisioning of a new cloud tenancy — an Azure Subscription, GCP Project, or AWS Account — with guardrails, baseline policies, networking, tagging, and FinOps onboarding pre-applied.',
+    category: 'Infrastructure',
+    status: 'active',
+    icon: 'cloud',
+    tags: ['cloud', 'subscription', 'project', 'account', 'landing-zone', 'governance'],
+    owner: 'cloud-architects',
+    team: 'Cloud Architects',
+    version: '1.0.0',
+    lastUpdated: '2025-05-06',
+    documentation: 'https://docs.internal/cloud-vending-machine',
+    estimatedTime: '20-30 minutes',
+    prerequisites: [
+      'Approved business unit and cost center',
+      'Cloud Architect review for non-standard requests',
+      'Valid budget allocation in FinOps system',
+      'Tagging policy acknowledgement'
+    ],
+    features: [
+      'Multi-cloud tenancy creation (Azure Subscription / GCP Project / AWS Account)',
+      'Landing zone baseline (networking, IAM, logging)',
+      'Automated cost-center and business-unit tagging',
+      'Budget alerts and FinOps onboarding',
+      'Policy guardrails and security baselines',
+      'ServiceNow change record auto-creation',
+      'Hand-off to owning team with RBAC pre-configured'
+    ],
+    parameters: [
+      { name: 'tenancy_name', type: 'string', required: true, description: 'Name for the new subscription / project / account' },
+      { name: 'cloud_provider', type: 'select', required: true, description: 'Target cloud provider', options: ['Azure', 'Google Cloud', 'AWS'] },
+      { name: 'tenancy_type', type: 'select', required: true, description: 'Type of cloud tenancy to provision', options: ['Azure Subscription', 'GCP Project', 'AWS Account'] },
+      { name: 'environment', type: 'select', required: true, description: 'Environment classification', options: ['production', 'staging', 'development', 'sandbox'] },
+      { name: 'business_unit', type: 'select', required: true, description: 'Owning business unit', options: ['Retail Banking', 'Corporate Banking', 'Wealth Management', 'Insurance', 'Technology', 'Shared Services'] },
+      { name: 'department', type: 'select', required: true, description: 'Owning department', options: ['Engineering', 'Data & Analytics', 'Security', 'Operations', 'Risk & Compliance', 'Marketing'] },
+      { name: 'cost_center', type: 'string', required: true, description: 'Finance cost center code (e.g., CC-10245)' },
+      { name: 'monthly_budget_usd', type: 'number', required: true, description: 'Monthly budget cap in USD for alerts and chargeback' },
+      { name: 'owning_team', type: 'string', required: true, description: 'Team that will own the tenancy after provisioning' },
+      { name: 'enable_landing_zone', type: 'boolean', required: false, description: 'Apply standard landing zone (networking, IAM, logging baseline)' }
+    ]
   }
 ];
 
