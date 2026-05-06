@@ -20,6 +20,7 @@ export const catalogOwners = [
   'FinOps & SWAM',
   'Security Team',
   'DevOps Team',
+  'Cloud Architects',
 ];
 
 export const catalogComponents: CatalogComponent[] = [
@@ -58,6 +59,18 @@ export const catalogComponents: CatalogComponent[] = [
     deployable: true,
     deployServiceId: 'app-deployment',
     lastUpdated: '2024-01-12',
+    status: 'active',
+  },
+  {
+    id: 'svc-cloud-vending-machine',
+    name: 'Cloud Vending Machine',
+    owner: 'Cloud Architects',
+    type: 'service',
+    description: 'Self-service provisioning of an Azure Subscription, GCP Project, or AWS Account with landing zone, tagging, and FinOps onboarding pre-applied.',
+    tags: ['cloud', 'subscription', 'project', 'account', 'landing-zone', 'governance'],
+    deployable: true,
+    deployServiceId: 'cloud-vending-machine',
+    lastUpdated: '2025-05-06',
     status: 'active',
   },
   {
