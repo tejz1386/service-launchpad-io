@@ -11,7 +11,8 @@ import {
   ChevronLeft,
   Menu,
   PiggyBank,
-  Home
+  Home,
+  GitPullRequest
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useState } from 'react';
@@ -23,6 +24,7 @@ const navigation = [
   { name: 'Catalog', href: '/catalog', icon: LayoutGrid },
   { name: 'Teams', href: '/teams', icon: Users },
   { name: 'Cost Insights', href: '/cost-insights', icon: PiggyBank },
+  { name: 'Engineering Metrics', href: '/engineering-metrics', icon: GitPullRequest },
   { name: 'My Requests', href: '/requests', icon: Activity },
   { name: 'Documentation', href: '/docs', icon: BookOpen },
   { name: 'Settings', href: '/settings', icon: Settings },
