@@ -13,6 +13,7 @@ import TeamOnboarding from "./pages/TeamOnboarding";
 import CostInsights from "./pages/CostInsights";
 import DocumentationPage from "./pages/Documentation";
 import EngineeringMetrics from "./pages/EngineeringMetrics";
+import FinOpsAI from "./pages/FinOpsAI";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -34,6 +35,7 @@ const App = () => (
           <Route path="/cost-insights" element={<CostInsights />} />
           <Route path="/docs" element={<DocumentationPage />} />
           <Route path="/engineering-metrics" element={<EngineeringMetrics />} />
+          <Route path="/ai-finops" element={<FinOpsAI />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
