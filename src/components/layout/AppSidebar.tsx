@@ -12,7 +12,8 @@ import {
   Menu,
   PiggyBank,
   Home,
-  GitPullRequest
+  GitPullRequest,
+  Sparkles
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useState } from 'react';
@@ -25,6 +26,7 @@ const navigation = [
   { name: 'Teams', href: '/teams', icon: Users },
   { name: 'Cost Insights', href: '/cost-insights', icon: PiggyBank },
   { name: 'Engineering Metrics', href: '/engineering-metrics', icon: GitPullRequest },
+  { name: 'AI for FinOps', href: '/ai-finops', icon: Sparkles },
   { name: 'My Requests', href: '/requests', icon: Activity },
   { name: 'Documentation', href: '/docs', icon: BookOpen },
   { name: 'Settings', href: '/settings', icon: Settings },
